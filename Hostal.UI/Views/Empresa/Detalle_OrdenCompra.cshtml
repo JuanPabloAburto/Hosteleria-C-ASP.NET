@@ -1,0 +1,88 @@
+﻿@model Negocio.Empleador.ListOC
+
+@{
+    ViewBag.Title = "Detalle_OrdenCompra";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+    <div class="container">
+        <h2><strong>Detalle</strong></h2>
+
+        <h4>Orden de compra</h4>
+        <div class="text-center">
+            <h4>@ViewBag.Error</h4>
+        </div>
+        <hr class="bg-warning" />
+        <div class="row container">
+            <div class=" col-md-6">
+                <h4>
+                    <strong>
+                        Numero de orden de compra
+                    </strong>
+                </h4>
+                <h5>
+                    @Html.DisplayFor(model => model.Num_OC)
+                </h5>
+            </div>
+            <div class="col-md-6">
+                <h4>
+                    <strong>
+                        Datos huesped
+                    </strong>
+                </h4>
+
+                <h4>
+                    @Html.DisplayFor(model => model.RUT_H)  @Html.DisplayFor(model => model.NOMBRE_H) @Html.DisplayFor(model => model.APELLIDOPATERNO_H)
+                </h4>
+            </div>
+
+            <div class=" col-md-6">
+                <h4>
+                    <strong>
+                        Datos empresa
+                    </strong>
+                </h4>
+                <h4>
+                    @Html.DisplayFor(model => model.RUT_E)  @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+                </h4>
+            </div>
+            <div class="col-md-6">
+                <h4>
+                    <strong>
+                        Valor Habitación 
+                    </strong>
+                </h4>
+
+                <h4>
+                    @Html.DisplayFor(model => model.Num_Hab)
+                </h4>
+            </div>
+
+            <div class="col-md-6">
+                <h4>
+                    <strong>
+                        Número de Habitación
+                    </strong>
+                </h4>
+                @Html.DisplayFor(model => model.total_habitacion)
+                <h4>
+                </h4>
+            </div>
+
+          
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+<p>
+    <a href="/Empresa/ListOrdenCompra" class="btn btn-warning mx-2">Volver a la lista</a>
+    <a href="/Empresa/listHuesped" class="btn-dark btn mx-2">Ver huespedes</a>
+</p>

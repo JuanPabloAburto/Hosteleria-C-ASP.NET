@@ -1,0 +1,62 @@
+﻿@model List<Negocio.Empresa.ListHuesped>
+@{
+    ViewBag.Title = "Listado Huespedes";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <h2><strong>Gestión</strong> Huesped</h2>
+
+
+        <div id="" class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Rut               </th>
+                        <th>Nombre            </th>
+                        <th>ApellidoP         </th>
+                        <th>ApellidoM         </th>
+                        <th>Telefono          </th>
+
+                        <th>Telefono              </th>
+                        <th>
+                            Ver
+                        </th>
+                        <th>
+                            Solicitar
+                        </th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.RUT_H)              </td>
+                <td> @Html.DisplayFor(modelItem => item.NOMBRE_H)            </td>
+                <td> @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_H)        </td>
+                <td> @Html.DisplayFor(modelItem => item.APELLIDOMATERNO_H)         </td>
+                <td> @Html.DisplayFor(modelItem => item.TELEFONO_H)          </td>
+                <td> @Html.DisplayFor(modelItem => item.RUT_E)       </td>
+
+             
+
+                <td>
+                    @Html.ActionLink("Detalle", "Detalle_Huesped", new { id = item.RUT_H }, new { @class = "btn btn-dark btn-block" })
+
+                </td>
+
+                <td>
+                    @Html.ActionLink("Reservar", "CrearOrdenCompra", new { idOC = item.RUT_H }, new { @class = "btn btn-warning btn-block" })
+
+                </td>
+
+            </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

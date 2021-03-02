@@ -1,0 +1,23 @@
+﻿@model HOSTAL.ENTIDADES.PROVEEDOR
+
+@{
+    ViewBag.Title = "Home_Proveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Prov.cshtml";
+}
+
+<br />
+<br />
+<div class="container text-center">
+
+    <div class="container text-center">
+
+        <h1>
+            Bienvenido      @Html.DisplayFor(model => model.NOMBRE_PROV)
+
+        </h1>
+        <hr class="bg-warning"/>
+       
+        <br />
+        <h6>Aquí podrar ver tus ordenes de pedidos, insertar productos y poder verlos.</h6>
+    </div>
+</div>

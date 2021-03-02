@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Lista_ProductosProveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+<h2>Lista_ProductosProveedor</h2>
+
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h2><strong>Lista</strong> Productos</h2>
+        </div>
+
+
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Id productos</th>
+                        <th>Nombre productos </th>
+                        <th>Precio           </th>
+                        <th>Stock producto          </th>
+
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var elemento in (List<Negocio.Empleador.ProductoProveedor>)ViewBag.listprod)
+                    {
+                        <tr>
+                            <td>@elemento.ID_PRODUCTO             </td>
+                            <td>@elemento.NOMBRE_PRODUCTO    </td>
+                            <td>@elemento.PRECIO       </td>
+                            <td>@elemento.StockProducto         </td>
+
+
+
+
+                        </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

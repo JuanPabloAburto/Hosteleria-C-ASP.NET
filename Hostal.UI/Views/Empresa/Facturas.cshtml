@@ -1,0 +1,111 @@
+﻿@model List<Negocio.Empleador.ListOC>
+
+@{
+    ViewBag.Title = "Facturas";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+<div class="container">
+
+
+    <h2>Facturas</h2>
+
+    <hr class="bg-warning" />
+
+    <div class="table-responsive">
+        <table id="Tabla" class="table table-striped table-hover table-sm">
+            <thead class="table-dark">
+                <tr>
+
+                    <th>
+                        N° Orden
+                    </th>
+                    <th>
+                        Fecha Ingreso
+                    </th>
+                    <th>
+                        Fecha Salida
+                    </th>
+                    <th>
+                        Rut Huesped
+                    </th>
+                    <th>
+                        Nombre Huesped
+                    </th>
+                    <th>
+                        Nombre Empresa
+                    </th>
+                    <th>
+                        N° Habitación
+                    </th>
+                    <th>
+                        Precio Habitacion
+                    </th>
+                    <th>
+                        Estado OC
+                    </th>
+                    <th>
+                        Funcion
+                    </th>
+
+                 
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Num_OC)
+                    </td>
+
+                    <td>
+                        @(String.Format("{0:dd/MM/yyyy}", item.Fecha_Entrada))
+                    </td>
+
+                    <td>
+                        @(String.Format("{0:dd/MM/yyyy}", item.Fecha_salida))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RUT_H)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_H)
+                        @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_H)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_EMPRESA)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Num_Hab)
+                    </td>
+
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.total_habitacion, new { @type = "number" })
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.estado_OC)
+                    </td>
+
+
+
+                    <td>
+                        @Html.ActionLink("Detalle", "Detalle_Factura", new { id = item.Num_OC }, new { @class = "btn btn-secondary btn-block" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Descargar factura", "Generar", new { id = item.Num_OC }, new { @class = "btn btn-warning btn-block" })
+                    </td>
+
+                </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model List<Negocio.Empleador.ListOC>
+
+@{
+    ViewBag.Title = "Listado de Huespedes";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12 container">
+        <h2><strong>Lista</strong></h2>
+
+        <h4>Orden de Compra</h4>
+
+        <div class="table-responsive">
+            <table id="TablaOrdenCompra" class="table table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>N° Orden         </th>
+                        @*<th>Fecha Ingreso        </th>*@
+                        <th>Fecha Salida         </th>
+                        <th>Rut Huesped          </th>
+                        <th>N° Habitacion    </th>
+                        <th>Nombre Huesped </th>
+                        @*<th>Telefono         </th>*@
+                        <th>Nombre Empresa        </th>
+                        <th>Rut Empresa       </th>
+                        <th>Total Minuta      </th>
+                        <th>Solicitar     </th>
+                        <th>Ver     </th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.Num_OC)            </td>
+                @*<td>@(String.Format("{0:dd/MM/yyyy}", item.FECHAINGRESO))</td>*@
+                @* <td> @Html.DisplayFor(modelItem => item.FECHASALIDA)            </td>*@
+                @*<td> @Html.DisplayFor(modelItem => item.TELEFONO_H)            </td>*@
+                <td>@(String.Format("{0:dd/MM/yyyy}", item.Fecha_salida))</td>
+
+                <td> @Html.DisplayFor(modelItem => item.RUT_H)             </td>
+                <td> @Html.DisplayFor(modelItem => item.Num_Hab)      </td>
+                <td> @Html.DisplayFor(modelItem => item.NOMBRE_H)  @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_H)             </td>
+                <td> @Html.DisplayFor(modelItem => item.NOMBRE_EMPRESA)            </td>
+                <td>
+                    @Html.ActionLink("Comedor", "ReservarComedor", new { id = @item.Num_OC }, new { @class = "btn btn-secondary btn-block " })
+
+
+                    @* @Html.ActionLink("Eliminar", "Delete", new { id = @item.NUMERO_OC }, new { @class = "btn btn-danger" })*@
+                </td>
+                <td>
+                    @Html.ActionLink("Estado", "EditarOrdenCompra", new { id = @item.Num_OC }, new { @class = "btn btn-warning btn-block" })
+
+                </td>
+            </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

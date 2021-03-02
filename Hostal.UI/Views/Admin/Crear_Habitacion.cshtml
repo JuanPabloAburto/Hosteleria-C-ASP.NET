@@ -1,0 +1,122 @@
+﻿@model Negocio.Admin.ListHabitacion
+
+@{
+    ViewBag.Title = "Create";
+
+
+
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+<div class="row container">
+
+    <div class="col-sm-12">
+        <div class="text-danger">
+            <p class="text-center">
+                @ViewBag.Error
+            </p>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+
+        @using (Html.BeginForm())
+        {
+            <form method="post">
+
+
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal row container">
+                    <hr />
+
+                    <div class="col-md-12">
+                        <h2><strong>Crear</strong> Habitación</h2>
+                        <hr class="bg-warning" />
+                    </div>
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group col-md-3">
+                        <label class="control-label col-md-12">Número de Habitación</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.NUMERO_HB, new { htmlAttributes = new { @class = "form-control", @id = "textRutEmp", @Type = "text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.NUMERO_HB, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label col-md-12">Precio</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.PRECIO_HB, new { htmlAttributes = new { @class = "form-control", @id = "", @Type = "", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.PRECIO_HB, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label col-md-12">Descripcion</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control", @id = "textApellidoPaterno", @Type = "text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.ID_ESTADO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                 
+                    <div class="form-group col-md-3">
+                        <label class="control-label col-md-12">Estado Usuario</label>
+                        <div class="col-md-13">
+                            @Html.DropDownListFor(model => model.ID_ESTADO, ViewBag.Estado as IEnumerable<SelectListItem>, "Estado Cuenta", new { @class = "form-control", @required = "required" })
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-md-12">
+                        <div class="col-md-offset-2 col-md-10">
+
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                                Guardar
+                            </button>
+
+                            <a class="btn btn-secondary mx-2" href="/admin/ListHabitacion">Volver</a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">¿Esta segura de crear una nueva Habitacion?</h5>
+                                    <h5 class="modal-title">Recuerde que si crea una Habitación de estado Disponible aparecera visible para los Futuros Huespedes</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Se creará una Habitación
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" value="Si, crear" class="btn btn-warning" id="BtnEnviar" />
+
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        }
+
+
+    </div>
+</div>

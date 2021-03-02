@@ -1,0 +1,108 @@
+﻿@model List<Negocio.Empleador.ListPedido>
+
+@{
+    ViewBag.Title = "Listar_Orden_Pedido";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+<div class="container">
+
+
+    <h2>Listar Orden Pedido</h2>
+
+    
+    <div class="table-responsive">
+        <table id="Tabla" class="table table-striped table-hover table-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>N° Orden Pedido</th>
+                    <th>Fecha Orden</th>
+                    <th>Rut Contacto</th>
+                    <th>Contacto</th>
+                    <th>Proveedor</th>
+                    <th>Total </th>
+                    <th>Estado Orden</th>
+                    <th>Productos Solicitados<th>
+                        
+                    </th>
+                    <th> 
+                     
+                </tr>
+            
+
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_ORDENPEDIDO)
+                    </td>
+                    <td>
+                        @(String.Format("{0:dd/MM/yyyy}", item.FECHA_ORDEN))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RUT_PROV)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_PROV) @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_PROV)
+
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.EMPRESA)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRECIO_TOTAL)
+                    </td>
+
+
+
+                    @if (item.DESCRIPCION_ESTADO == "despachada")
+                    {
+                        <td><span class="badge badge-primary">@item.DESCRIPCION_ESTADO</span>          </td>
+                    }
+
+                    @if (item.DESCRIPCION_ESTADO == "aceptada")
+                    {
+                        <td><span class="badge badge-warning">@item.DESCRIPCION_ESTADO</span>          </td>
+                    }
+               
+                    
+                  
+                    <td>
+
+                        @Html.ActionLink("Ver pedido", "Lista_Productospedidosdespachados", new { id_ped = item.ID_ORDENPEDIDO }, new { @class = "btn btn-dark  btn-block" })
+                    </td>
+                    @if (item.DESCRIPCION_ESTADO == "despachada")
+                    {
+                        <td>
+                            @Html.ActionLink("Aceptar   pedido", "Recibir_productosproveedor", new { idpro = item.ID_ORDENPEDIDO }, new { @class = "btn btn-warning btn-block" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Rechazar pedido", "Rechazar_productosproveedor", new { idpro = item.ID_ORDENPEDIDO }, new { @class = "btn btn-dark btn-block" })
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.ActionLink("Aceptar   pedido", "Recibir_productosproveedor", new { idpro = item.ID_ORDENPEDIDO }, new { @class = "btn btn-warning disabled " })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Rechazar pedido", "Rechazar_productosproveedor", new { idpro = item.ID_ORDENPEDIDO }, new { @class = "btn btn-dark disabled" })
+
+                        </td>
+                    }
+
+
+                </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+</div>

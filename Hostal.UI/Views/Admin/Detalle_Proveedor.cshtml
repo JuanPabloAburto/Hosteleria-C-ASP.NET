@@ -1,0 +1,88 @@
+﻿@model Negocio.Admin.ListProveedor
+
+@{
+    ViewBag.Title = "Detalle_Proveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+    <div class="container">
+        <h2>
+            <strong>
+                Detalle Proveedor
+            </strong>
+        </h2>
+        <hr />
+
+        <div class="container row">
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Nombre
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.nombre_prov)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Apellido Paterno
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.apellidoP)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Apellido Materno
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.apellidoM)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Telefono
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.telefono)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Region
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.region)
+                </h6>
+            </div>
+
+
+        </div>
+        <hr />
+
+
+    </div>
+<div class="container row">
+    <div class="col-md-3">
+        @Html.ActionLink("Editar", "Editar_Proveedor", new { id = Model.rut_prov }, new { @class = "btn btn-warning" })
+        <a class="btn btn-secondary mx-2" href="/admin/listProveedores">Volver</a>
+
+    </div>
+  
+</div>
+
+

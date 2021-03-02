@@ -1,0 +1,51 @@
+﻿@model IEnumerable<HOSTAL.ENTIDADES.ORDEN_COMPRA>
+
+@{
+    ViewBag.Title = "ListOrdenCompra";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12 container">
+        <h2><strong>Lista</strong></h2>
+        <h4>Orden de Compra</h4>
+        <hr class="bg-warning"/>
+        <div class="table-responsive">
+            <table id="TablaOrdenCompra" class="table table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>N° Orden         </th>
+                        <th>Fecha Ingreso        </th>
+                        <th>Fecha Salida         </th>
+                        <th>Rut Huesped          </th>
+                        <th>Numero Habitacion    </th>
+                        <th>Precio Reserva </th>
+          
+                        <th>Ver             </th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>@(String.Format("{0:n0}", item.NUMERO_OC))</td>
+                <td>@(String.Format("{0:dd/MM/yyyy}", item.FECHAINGRESO))</td>
+                <td>@(String.Format("{0:dd/MM/yyyy}", item.FECHASALIDA))</td>
+
+                <td> @Html.DisplayFor(modelItem => item.HUESPED_RUT_H)             </td>
+                <td>@(String.Format("{0:n0}", item.HABITACION_NUMERO_HB))</td>
+                <td>@(String.Format("${0:n0}", item.PRECIO_TOTAL))</td>
+
+                <td>
+
+                    @Html.ActionLink("Detalle", "Detalle_OrdenCompra", new { id = @item.NUMERO_OC }, new { @class = "btn btn-warning btn-block" })
+                </td>
+            </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

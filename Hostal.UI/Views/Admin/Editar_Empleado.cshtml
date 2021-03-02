@@ -1,0 +1,157 @@
+﻿@model Negocio.Admin.LisEmpleado.ListEmpleado
+
+@{
+    ViewBag.Title = "Editar_Empleado";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+   
+    <div class="container-fluid">
+
+        <div class="col-sm-12">
+            <div class="text-danger">
+                <p class="text-center">
+                    @ViewBag.Error
+                </p>
+            </div>
+        </div>
+
+
+        <div class="form-horizontal container">
+            <h2><strong>Editar</strong> Empleado</h2>
+
+            <hr class="bg-warning" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.rut)
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-12">Nombre Empleado</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.nombre, "Nombre Empleado", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-12">Apellido Paterno Empleado</div>
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.apellidoP, "Apellido Paterno", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.apellidoP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-12">Apellido Materno Empleado</div>
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.apellidoM, " ", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.apellidoM, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="control-label col-md-12">Telefono Empleado</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.telefono, "Telefono", new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger", @Type = "date" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-12">Sexo Empleado</label>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.id_sexo, ViewBag.Sexo as IEnumerable<SelectListItem>, "Selecionar sexo", new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="container">
+                    <hr class="bg-warning" />
+                    <h4>
+                        USUARIO
+                    </h4>
+                </div>
+                <br />
+            </div>
+
+            @*<div class="col-md-4">
+            <div class="form-group">
+                <div class="control-label col-md-12">Contraseña Usuarios</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.USUARIO.CONTRASEÑA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.USUARIO.CONTRASEÑA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+
+            <div class="form-group col-md-6">
+                <div class="control-label col-md-12">Tipo Usuario Empleado</div>
+                <div class="col-md-12">
+                    @Html.DropDownListFor(model => model.id_estado, ViewBag.Estado as IEnumerable<SelectListItem>, "Selecionar Estado Cuenta", new { @class = "form-control" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <div class="col-md-offset-2 col-md-10">
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                        Guardar cambios
+                    </button>
+
+                    <a class="btn btn-secondary mx-2" href="/admin/ListEmpleado">Volver</a>
+                </div>
+            </div>
+
+
+
+            <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">¿Está segura de Editar éste Empleado?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Se Editará un registro del empleado seleccionado
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Si, Editar" class="btn btn-warning" id="BtnEnviar" />
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+}
+
+

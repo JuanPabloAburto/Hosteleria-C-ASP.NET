@@ -1,0 +1,146 @@
+﻿@model HOSTAL.ENTIDADES.PLATOS_MINUTA
+
+@{
+    ViewBag.Title = "ReservarComedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-2 row">
+
+        <div class="col-sm-12">
+            <div class="text-danger">
+                <p class="text-center">
+                    @ViewBag.Error
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="text-center ">
+                <h2>Selecciona el numero de plato a solicitar</h2>
+            </div>
+        </div>
+
+        <div class="form col-md-12 text-center">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ORDEN_COMPRA.NUMERO_OC)
+
+
+
+        <div class="form-group col-md-12 container">
+            <div class="col-md-12">
+                <label class="label-primary control-label">
+                    Minuta Semanal
+                </label>
+                @Html.DropDownListFor(model => model.MINUTA_SEMANAL_ID_MINUTA, ViewBag.min as IEnumerable<SelectListItem>, "Selecionar Producto", new { @class = "form-control" })
+
+                @*  @Html.EditorFor(model => model.MINUTA_SEMANAL_ID_MINUTA, new { htmlAttributes = new { @class = "form-control", @type = "number", @required = "required" } })*@
+                @Html.ValidationMessageFor(model => model.MINUTA_SEMANAL_ID_MINUTA, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-md-12 mt-3">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                    Solicitar Plato
+                </button>
+                <a class="btn btn-secondary mx-2" href="/admin/ListEmpleado">Volver</a>
+
+            </div>
+
+            <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">¿Está segura de Solicitar este plato?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Su solicitud sera agregada a su cuenta final
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" value="Si, Solicitar plato" class="btn btn-warning" id="BtnEnviar" />
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    
+
+        </div>
+
+
+
+
+    </div>
+}
+
+@* -----------------------Menu------------------------------------------------- *@
+
+
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h2><strong>Minuta</strong>Semanal </h2>
+        </div>
+
+
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Tipo minuta</th>
+                        <th>Lunes </th>
+                        <th>Martes     </th>
+                        <th>Miercoles     </th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sabado</th>
+                        <th>Domingo</th>
+                        <th>Funciones </th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var elemento in (List<Negocio.Empleador.ListaMenu>)ViewBag.listmenu)
+                    {
+                    <tr>
+                        <td>@elemento.id_menu           </td>
+                        <td>@elemento.lunesm   </td>
+                        <td>@elemento.martesm        </td>
+                        <td>@elemento.miercolesm       </td>
+                        <td>@elemento.juevesm       </td>
+                        <td>@elemento.viernesm       </td>
+                        <td>@elemento.sabadom      </td>
+                        <td>@elemento.domingom       </td>
+                         
+                        <td>  @Html.ActionLink("editar", "editarmenu", new { id = elemento.id_menu }, new { @class = "btn btn-warning btn-block" })   </td>
+
+
+
+                    </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

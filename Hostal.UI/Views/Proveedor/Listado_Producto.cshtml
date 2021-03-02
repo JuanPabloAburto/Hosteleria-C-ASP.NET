@@ -1,0 +1,60 @@
+﻿@model IEnumerable<HOSTAL.ENTIDADES.PRODUCTO>
+@{
+    ViewBag.Title = "Listado_Producto";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Prov.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/EstiloTabla/datatables/datatables.min.js" />
+<!--datables estilo bootstrap 4 CSS-->
+<link rel="stylesheet" type="text/css" href="~/Content/EstiloTabla/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+<div class="container mt-5">
+    <div class="text-center">
+        <h2>Listado de  Producto</h2>
+        <hr class="bg-warning" />
+    </div>
+    <table id="Tabla" class="table table-striped table-hover table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    Nombre Producto
+                </th>
+                <th>
+                    Precio de Producto
+                </th>
+                <th>
+                    Stock de Producto
+                </th>
+                <th>
+                    Fecha Vencimiento Producto
+                </th>
+                <th>Funciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE_PRO)
+                </td>
+                <td>
+                    @string.Format("${0:n0}",item.PRECIO_PRO)
+
+                </td>
+                <td>
+                    @string.Format("{0:n0}", item.STOCK_PRO)
+
+                </td>
+                <td>
+                    @(String.Format("{0:dd/MM/yyyy}", item.FECHAVENCIMIENTO_PRO))
+                </td>
+               
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id = @item.ID_PRODUCTO }, new { @class = "btn btn-warning btn-block disabled " })
+
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,94 @@
+﻿@model HOSTAL.ENTIDADES.PRODUCTO
+@{
+    ViewBag.Title = "CrearProducto";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Prov.cshtml";
+}
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-danger">
+                <p class="text-center">
+                    @ViewBag.Error
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <h2>Crear Producto</h2>
+        <hr class="bg-warning" />
+    </div>
+    <div />
+    @using (Html.BeginForm())
+    {<form method="post">
+            @Html.AntiForgeryToken()
+            <br />
+            <div class="form-horizontal row">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group col-sm-12 col-md-6">
+                    <label class="control-label">Nombre Producto</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NOMBRE_PRO, new { htmlAttributes = new { @class = "form-control", Type = "text", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.NOMBRE_PRO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <label class="control-label">Precio Producto</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PRECIO_PRO, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.PRECIO_PRO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <label class="control-label">Stock Producto</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.STOCK_PRO, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.STOCK_PRO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <label class="control-label">Fecha Vencimiento</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FECHAVENCIMIENTO_PRO, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+                        @Html.ValidationMessageFor(model => model.FECHAVENCIMIENTO_PRO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-sm-12 col-md-6" hidden>
+                    <label class="control-label">Rut Provedor del Producto</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RUT_PROV, new { htmlAttributes = new { @class = "form-control", Type = "text", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.RUT_PROV, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="col-md-offset-2 col-md-10">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                            Guardar producto
+                        </button>
+                        <a class="btn btn-secondary mx-2" href="/Proveedores/Listado_Producto">Volver</a>
+                    </div>
+                </div>
+                <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">¿Esta segura de Guardar este producto?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Se guarda el producto en el sistema
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" value="Si, Crear" class="btn btn-warning" id="BtnEnviar" />
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</div>

@@ -1,0 +1,69 @@
+﻿@model Negocio.Proveedor.ListOrdenpedidoprov
+@{
+    ViewBag.Title = "Motivo_detalle";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Prov.cshtml";
+}
+
+
+
+
+<div class="container mt-5">
+    <h2>Motivo de Rechazo</h2>
+    <hr class="bg-warning" />
+    <div class="row">
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Id Orden pedido
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.ID_ORDENPEDIDO)
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Rut  proveedor
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.RUT_EMP)
+            </h6>
+        </div>
+
+
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Fecha Orden de pedido
+            </h5>
+            <h6>
+                @(String.Format("{0:dd/MM/yyyy}", Model.FECHA_ORDEN))
+
+            </h6>
+        </div>
+
+
+    </div>
+    <form method="post">
+
+        <div class="form-group col-md-12">
+             
+                <h5> Motivo de rechazo </h5>
+             
+
+            <h6>
+                @Html.DisplayFor(model => model.motivo)
+            </h6>
+           
+
+
+        </div>
+
+
+        <div class="col-md-12">
+            @Html.ActionLink("Atras", "ListaOrdenpedidoprov",  new { @class = "btn btn-primary" })
+        </div>
+
+    </form>
+
+</div>

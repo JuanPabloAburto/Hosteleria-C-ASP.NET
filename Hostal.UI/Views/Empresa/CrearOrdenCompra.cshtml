@@ -1,0 +1,108 @@
+﻿@model HOSTAL.ENTIDADES.ORDEN_COMPRA
+
+@{
+    ViewBag.Title = "CrearOrdenCompra";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+@ViewBag.Error;
+<div class="row container">
+    <div class="col-sm-12">
+
+        @using (Html.BeginForm())
+        {
+            <form method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal container row">
+                    <div class="col-md-12">
+                        <h2><strong>Crear Reserva</strong> </h2>
+                    </div>
+                    <hr />
+                    @*   @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group col-md-6">
+                            <h5 class="control-label col-md-12">  Numero de orden de compra  </h5>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NUMERO_OC, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NUMERO_OC, "", new { @class = "text-danger" })
+                            </div>
+                        </div> *@
+
+                    <div class="form-group col-md-6">
+                        <h5 class="control-label col-md-12">  Fecha de ingreso  </h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FECHAINGRESO, new { htmlAttributes = new { @class = "form-control", @id = "textFechaIngreso", @Type = "date", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.FECHAINGRESO, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <h5 class="control-label col-md-12">  Fecha de salida  </h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FECHASALIDA, new { htmlAttributes = new { @class = "form-control", @id = "textFechaSalida", @Type = "date", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.FECHASALIDA, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <h5 class="control-label col-md-12">  Rut huesped  </h5>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.HUESPED_RUT_H, new { htmlAttributes = new { @class = "form-control", @id = "textRutHuesped", @Type = "text", @disabled = "disabled" } })
+                            @Html.ValidationMessageFor(model => model.HUESPED_RUT_H, "", new { @class = "text-danger", @disabled = "disabled" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label col-md-12">N° Habitación</label>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.HABITACION_NUMERO_HB, ViewBag.Hab as IEnumerable<SelectListItem>, "Selecionar Número Habitación", new { @class = "form-control", @required = "required" })
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group col-md-12">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crear reserva" class="btn btn-warning mx-2" id="BtnEnviar" />
+                            <a href="/Empresa/listOrdenCompra" class="btn btn-secondary mx-2">Volver</a>
+                        </div>
+                    </div>
+
+                    <div>
+                    </div>
+
+                </div>
+            </form>
+        }
+
+        <div id="" class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Número de Habitación             </th>
+                        <th>Descripción         </th>
+                        <th>Estado        </th>
+                        <th>Precio por dia         </th>
+
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in (List<Negocio.Admin.ListHabitacion>)ViewBag.Habitacion)
+                {
+                    <tr>
+                        <td> @item.NUMERO_HB             </td>
+                        <td> @item.DESCRIPCION           </td>
+                        <td> @item.ESTADO       </td>
+                        <td> @item.PRECIO_HB        </td>
+
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>

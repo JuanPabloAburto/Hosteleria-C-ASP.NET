@@ -1,0 +1,65 @@
+﻿@model HOSTAL.ENTIDADES.ORDEN_PEDIDO
+
+@{
+    ViewBag.Title = "Eliminar_Pedido";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+<h2>Eliminar_Pedido</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ORDEN_PEDIDO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_ORDEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_ORDEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD_PRODUCTOS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD_PRODUCTOS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMPLEADO.NOMBRE_EMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMPLEADO.NOMBRE_EMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVEEDOR.NOMBRE_PROV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVEEDOR.NOMBRE_PROV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Listar_Orden_Pedido")
+        </div>
+    }
+</div>

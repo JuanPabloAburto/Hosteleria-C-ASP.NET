@@ -1,0 +1,179 @@
+﻿@model Negocio.Empleador.ListOC
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+
+        <div class="container">
+            <h2>
+                <strong>
+                    Check Out
+                </strong>
+            </h2>
+            <hr class="bg-warning" />
+
+            <div class=" row">
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Número Orden de Compra
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.Num_OC)
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Número Habitación
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.Num_Hab)
+                    </h6>
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Datos Empresa
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.RUT_E)   @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Datos Huesped
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.RUT_H)    @Html.DisplayFor(model => model.NOMBRE_H)
+                    </h6>
+                    <h6>
+                        @Html.DisplayFor(model => model.APELLIDOPATERNO_H)    @Html.DisplayFor(model => model.APELLIDOMATERNO_H)
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Fecha Entrada
+                        </strong>
+                    </h5>
+                    <h6>
+                        @(String.Format("{0:dd/MM/yyyy}", Model.Fecha_Entrada))
+
+                    </h6>
+
+                    <h5>
+                        <strong>
+                            Fecha Salida
+                        </strong>
+                    </h5>
+                    <h6>
+                        @(String.Format("{0:dd/MM/yyyy}", Model.Fecha_salida))
+
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Estado Habitación
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.estado_OC)
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Valor total de dias de estadia
+                        </strong>
+                    </h5>
+                    <h6>
+                        @(String.Format("${0:n0}", Model.total_habitacion))
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Valor total de Servicio Comedor
+                        </strong>
+                    </h5>
+                    <h6>
+                        @(String.Format("${0:n0}", Model.total_comedor))
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Total Orden Compra
+                        </strong>
+                    </h5>
+                    <h6>
+                        @(String.Format("${0:n0}", Model.total_OC))
+                    </h6>
+                </div>
+
+                <div class="col-md-12">
+                    <h4>
+                        <strong>
+                            Servicios extras
+                        </strong>
+                    </h4>
+                </div>
+                <div class="col-md-12">
+                    @foreach (var item in (List<Negocio.Empresa.ListMinuta>)ViewBag.Servicios)
+                    {
+                        <div class="col-md-12 container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h6><strong>@item.DESCRIPCION</strong>  @(String.Format("${0:n0}", item.PRECIO))
+</h6>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salida" class="btn btn-warning" />
+                    <a href="/Empleado/Listar_Orden_Compra" class="btn btn-dark mx-2">Volver</a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+}

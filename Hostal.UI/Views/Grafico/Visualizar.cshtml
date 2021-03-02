@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Visualizar";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12">
+            <div class="text-center">
+                <h1 class="pb-2">
+                    <strong>Graficos</strong>
+                </h1>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <div">
+                <div class="text-left">
+                    <hr class="container bg-warning" />
+                    <h5 class="p-2">
+                        <strong>
+                            N° Reservas  - Empresa
+                        </strong>
+                    </h5>
+                    <hr class="bg-warning container" />
+                </div>
+
+                <!-- Aquí se genera el grafico de las reservas por empresa -->
+                <div id="ReservaEmpresa" style="width:800px;height:300px;"></div>
+
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12">
+
+        <div class="text-left">
+            <hr class="bg-warning container" />
+            <h5 class="p-2">
+                <strong>
+                    N° de Platos más solicitud
+                </strong>
+            </h5>
+            <hr class="bg-warning container" />
+
+        </div>
+
+
+        <!-- Aquí se genera el grafico de las reservas por empresa -->
+        <div id="CantidadPlato" style="width:800px;height:300px;"></div>
+
+    </div>
+
+</div>
+<div class="align-middle">
+
+</div>
+
+
+<script>
+    var chartData; // globar variable for hold chart data
+    //  google.load("visualization", "1", { packages: ["corechart"] });
+    google.charts.load('current', { 'packages': ['corechart'] });
+    // Here We will fill chartData
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "https://localhost:44326/Grafico/OrdenGrafico",
+            dataType: "json",
+            contentType: "application/json; chartset=utf-8",
+            success: function (data) {
+                chartData = data;
+            },
+            error: function () {
+                alert("Error no se pudo traer todo los datos");
+            }
+        }).done(function () {
+            // after complete loading data
+            google.setOnLoadCallback(drawChart);
+            drawChart();
+        });
+    });
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable(chartData);
+        var options = {
+            title: "Reservas por cliente - Empresa",
+            pointSize: 5,
+            colors:['#FFA000','#FFA000']
+        };
+        var Chart = new google.visualization.ColumnChart(document.getElementById('ReservaEmpresa'));
+        Chart.draw(data, options);
+    }
+</script>
+
+
+
+<script>
+    var chartDataCl; // globar variable for hold chart data
+    //  google.load("visualization", "1", { packages: ["corechart"] });
+    google.charts.load('current', { 'packages': ['corechart'] });
+    // Here We will fill chartData
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "https://localhost:44326/Grafico/PlatosGrafico",
+            dataType: "json",
+            contentType: "application/json; chartset=utf-8",
+            success: function (dataCl) {
+                chartDataCl = dataCl;
+            },
+            error: function () {
+                alert("Error no se pudo traer todo los datos");
+            }
+        }).done(function () {
+            // after complete loading data
+            google.setOnLoadCallback(drawChart);
+            drawCharta();
+        });
+    });
+    function drawCharta() {
+        var dataCl = google.visualization.arrayToDataTable(chartDataCl);
+        var options = {
+            title: "Platos solicitados",
+            pointSize: 5,
+            colors: ['#FFA000', '#FFA000']
+
+        };
+        var Chart = new google.visualization.ColumnChart(document.getElementById('CantidadPlato'));
+        Chart.draw(dataCl, options);
+    }
+</script>

@@ -1,0 +1,129 @@
+﻿@model Negocio.Admin.ListProveedor
+
+@{
+    ViewBag.Title = "Editar_Proveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+<div class="col-sm-12">
+    <div class="text-danger">
+        <p class="text-center">
+            @ViewBag.Error
+        </p>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal container row">
+    <div class="col-md-12">
+        <h2><strong>Editar</strong> Proveedor</h2>
+
+    </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.rut_prov)
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Nombre Contacto Proveedor</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombre_prov, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre_prov, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Apellido Paterno Proveedor</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.apellidoP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.apellidoP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Apellido Materno Proveedor</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.apellidoM, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.apellidoM, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Nombre de Empresa</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.empresa, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.empresa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Telefono Proveedor</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(model => model.email)
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Region Empleado</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.id_region, ViewBag.Region as IEnumerable<SelectListItem>, "Selecionar Region", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="control-label col-md-12">Region Empleado</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.id_estado, ViewBag.Estado as IEnumerable<SelectListItem>, "Selecionar Estado", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 col-md-10">
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionProv">
+                Guardar Cambios
+            </button>
+
+            <a class="btn btn-secondary mx-2" href="/admin/ListProveedores">Volver</a>
+        </div>
+    </div>
+
+
+
+    <div class="modal" id="ConfirmacionProv" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Está segura de Editar éste proveedor?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Se Editará un registro del proveedor
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Si, editar" class="btn btn-warning" id="BtnEnviar" />
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+}
+

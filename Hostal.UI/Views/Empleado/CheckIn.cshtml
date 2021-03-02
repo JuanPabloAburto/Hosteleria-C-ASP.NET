@@ -1,0 +1,135 @@
+﻿@model Negocio.Empleador.ListOC
+
+@{
+    ViewBag.Title = "CheckIn";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+
+
+        <div class="container m-3">
+            <h2>
+                <strong>
+                    Check In
+                </strong>
+            </h2>
+            <hr class="bg-warning" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Número Orden de Compra
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.Num_OC)
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Nombre empresa
+                        </strong>
+                    </h5>
+
+                    <h6>
+                        @Html.DisplayFor(model => model.RUT_E)   @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Nombre Huesped
+                        </strong>
+                    </h5>
+
+                    <h6>
+                        @Html.DisplayFor(model => model.RUT_H)    @Html.DisplayFor(model => model.NOMBRE_H)
+
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    
+                        <h5>
+                            <strong>
+                                Apellido Paterno
+                            </strong>
+                        </h5>
+
+                   
+                    <h6>
+                        @Html.DisplayFor(model => model.APELLIDOPATERNO_H)    @Html.DisplayFor(model => model.APELLIDOMATERNO_H)
+
+                    </h6>
+                </div>
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                           Fecha Entrada
+                        </strong>
+                    </h5>
+
+                    <h6>
+                        @Html.DisplayFor(model => model.Fecha_Entrada)  @Html.DisplayFor(model => model.Fecha_salida)
+
+                    </h6>
+                </div>
+
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Estado Oc
+                        </strong>
+                    </h5> 
+                    
+                    <span class="badge badge-danger">@Html.DisplayFor(model => model.estado_OC)</span>
+
+                    
+
+
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <h5>
+                        <strong>
+                            Total habitacion
+                        </strong>
+                    </h5>
+                    <h6>
+                        @Html.DisplayFor(model => model.total_habitacion)
+
+                    </h6>
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Recepcionar Huesped" class="btn btn-warning" />
+                <a href="/Empleado/Listar_Orden_Compra" class="btn btn-dark mx-2">Volver</a>
+            </div>
+        </div>
+    </div>
+
+   
+        }

@@ -1,0 +1,78 @@
+﻿@model Negocio.Empresa.ListHuesped
+
+@{
+    ViewBag.Title = "Detalle_Huesped";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+
+<div class="container mt-5">
+    <h2>Detalle huesped</h2>
+    <hr class="bg-warning"/>
+    <div class="row">
+ 
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Nombre Huesped
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.NOMBRE_H)
+            </h6>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Apellido Paterno
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.APELLIDOPATERNO_H)
+
+            </h6>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Apellido Materno
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.APELLIDOMATERNO_H)
+
+            </h6>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Telefono
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.TELEFONO_H)
+
+            </h6>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Nombre Empresa
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+
+            </h6>
+        </div>
+
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Sexo
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.sexo_des)
+            </h6>
+        </div>
+
+        <div class="col-sm-12">
+            @Html.ActionLink("Editar Huesped", "Editar_Huesped", new { id = Model.RUT_H }, new { @class = "btn btn-warning" }) 
+            <a href="/Empresa/listHuesped" class="btn btn-dark  mx-2">Volver</a>
+        </div>
+
+    </div> 
+ 
+
+</div>
+

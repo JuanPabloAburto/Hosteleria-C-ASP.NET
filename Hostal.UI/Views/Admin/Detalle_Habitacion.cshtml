@@ -1,0 +1,66 @@
+﻿@model Negocio.Admin.ListHabitacion
+@{
+    ViewBag.Title = "Detalle_Habitacion";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+<div class="container">
+    <h2>
+        <strong>
+            Detalle Habitación
+        </strong>
+    </h2>
+    <hr />
+
+    <div class="container row">
+        <div class="col-md-6">
+            <h5>
+                <strong>
+                    Número Habitación
+                </strong>
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.NUMERO_HB)
+            </h6>
+        </div>
+
+        <div class="col-md-6">
+            <h5>
+                <strong>
+                    Descripción
+                </strong>
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.DESCRIPCION)
+            </h6>
+        </div>
+
+        <div class="col-md-6">
+            <h5>
+                <strong>
+                    Precio por dia Habitación
+                </strong>
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.PRECIO_HB)
+            </h6>
+        </div>
+
+        <div class="col-md-6">
+            <h5>
+                <strong>
+                    Estado Habitación
+                </strong>
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.ESTADO)
+            </h6>
+        </div>
+
+    
+
+
+    </div>
+    <hr />

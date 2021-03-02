@@ -1,0 +1,20 @@
+.ColorEmpleado {
+    background-color: #212121;
+}
+
+.ColorEmpresa {
+    background-color: #212121;
+}
+
+.ColorProveedor {
+    background-color: #212121;
+}
+
+.ColorAdministrador {
+    background-color: #212121;
+}
+
+
+.efectoAmarillo:hover{
+    color: #FF9800
+}

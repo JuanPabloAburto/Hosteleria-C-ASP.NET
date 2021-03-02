@@ -1,0 +1,87 @@
+﻿
+@model List<Negocio.Admin.LisEmpleado.ListEmpleado>
+
+
+@{
+    ViewBag.Title = "listEmpleado";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h2><strong>Lista</strong> Empleado</h2>
+        </div>
+
+
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Rut Empleado       </th>
+                        <th>Nombre            </th>
+                        <th>Apellido Paterno         </th>
+                        <th>Apellido Materno         </th>
+
+                        @*<th>fechaNacimiento   </th>*@
+                        @*<th>fechaIngreso      </th>*@
+                        <th>Telefono          </th>
+                        <th>Email             </th>
+                        <th>Estado            </th>
+                        @*<th>sexo              </th>*@
+                        @*<th>Tipo Cuenta       </th>*@
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var elemento in Model)
+                    {
+                    <tr>
+                        <td>@elemento.rut                </td>
+                        <td>@elemento.nombre            </td>
+                        <td>@elemento.apellidoP         </td>
+                        <td>@elemento.apellidoM         </td>
+
+                        @*<td>@elemento.fechaNacimiento   </td>*@
+                        @*<td>@elemento.fechaIngreso      </td>*@
+                        <td>@elemento.telefono          </td>
+                        <td>@elemento.Email             </td>
+                        @if (elemento.Estado == "Habilitado")
+                        {
+                            <td><span class="badge badge-primary">@elemento.Estado</span>          </td>
+                        }
+                        @if (elemento.Estado == "Deshabilitado")
+                        {
+                            <td><span class="badge badge-danger">@elemento.Estado</span>          </td>
+                        }
+
+
+                        <td>
+
+                            @Html.ActionLink("Editar", "Editar_Empleado", new { id = @elemento.rut }, new { @class = "btn btn-warning" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalle", "Detalle_Empleado", new { id = @elemento.rut }, new { @class = "btn btn-secondary" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Eliminar", "Eliminar", new { id = @elemento.rut }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

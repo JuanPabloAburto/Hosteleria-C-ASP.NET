@@ -1,0 +1,73 @@
+﻿@model HOSTAL.ENTIDADES.ORDEN_COMPRA
+
+@{
+    ViewBag.Title = "EliminarOrdenCompra";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empresa.cshtml";
+}
+
+<h2>EliminarOrdenCompra</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ORDEN_COMPRA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAINGRESO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAINGRESO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHASALIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHASALIDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMEDOR.ID_COMEDOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMEDOR.ID_COMEDOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMPLEADO.NOMBRE_EMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMPLEADO.NOMBRE_EMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HABITACION.NUMERO_HB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HABITACION.NUMERO_HB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HUESPED.NOMBRE_H)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HUESPED.NOMBRE_H)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListOrdenCompra")
+        </div>
+    }
+</div>

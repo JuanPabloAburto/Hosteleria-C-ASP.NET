@@ -1,0 +1,138 @@
+/*--- pruebas---
+begin
+ SP_INSERTAR_COMPRA(902,'02-05-20','06-05-20','19345923-5',2,null,null);
+end;
+
+begin 
+sp_servicio_comida(3,1,901);
+end;   
+*/
+------------------
+
+----secuencia compra-----
+
+Create SEQUENCE sec_ordencom
+START WITH 1
+INCREMENT BY 1
+MAXVALUE 9000;
+
+
+---- procedimiento compra---------
+
+
+
+create or replace procedure  sp_insertar_compra
+(numero_orden int,fechaingreso date,fechasalida date,ruthuesped varchar2,nro_habitacion int, empleado_rut varchar2,total_minuta int)
+is 
+total number;
+Begin  
+
+insert INTO orden_compra values(numero_orden,fechaingreso,fechasalida,ruthuesped,nro_habitacion,empleado_rut,0,total_minuta);
+
+select hab.PRECIO_HB
+into total
+from orden_compra oc 
+ join habitacion hab  
+on oc.HABITACION_NUMERO_HB = hab.NUMERO_HB
+left join PLATOS_MINUTA pm 
+on oc.NUMERO_OC = pm.ORDEN_COMPRA_NUMERO_OC 
+ left join MINUTA_SEMANAL ms 
+  on pm.MINUTA_SEMANAL_ID_MINUTA = ms.ID_MINUTA
+  where oc.NUMERO_OC = numero_orden;
+
+UPDATE ORDEN_COMPRA
+set PRECIO_TOTAL =  total
+where NUMERO_OC = numero_orden;
+
+end sp_insertar_compra;
+
+
+
+
+---Secuencia platos
+create SEQUENCE seq_platos
+  INCREMENT BY 1 
+  START with 20
+  MAXVALUE 900;
+
+--------Servicios comida-----
+
+create or replace procedure sp_servicio_comida
+( id_minuta int, id_orden int)
+is
+total int;
+minuta int;
+begin
+insert into platos_minuta values(SEQ_PLATOS.NEXTVAL,id_minuta,id_orden);
+
+
+select sum(ms.precio_min),sum((hab.PRECIO_HB+  
+(case when ms.precio_min is null then
+  0
+else ms.precio_min end) ))
+into minuta,total
+from orden_compra oc 
+ join habitacion hab  
+on oc.HABITACION_NUMERO_HB = hab.NUMERO_HB
+left join PLATOS_MINUTA pm 
+on oc.NUMERO_OC = pm.ORDEN_COMPRA_NUMERO_OC 
+ left join MINUTA_SEMANAL ms 
+  on pm.MINUTA_SEMANAL_ID_MINUTA = ms.ID_MINUTA where oc.NUMERO_OC = id_orden ;
+
+
+UPDATE ORDEN_COMPRA
+set PRECIO_TOTAL =  total,
+total_minuta = minuta
+where NUMERO_OC = id_orden;
+
+end sp_servicio_comida;
+
+
+------------- procedimiento proveedor----
+
+create or replace procedure  sp_insertar_proveedor
+--proveedor
+(rutproveedor varchar2, nombre varchar2,apellidop varchar2,
+apellidom varchar2,telefono int, email_usuario varchar2,idregion int,
+--usuario
+ idestadousuario int, idtipousuario int,contrasena varchar2)
+ is 
+Begin 
+Insert into usuario values(email_usuario,contrasena,idtipousuario,idestadousuario,NULL);
+INSERT INTO proveedor values(rutproveedor,nombre, apellidop, apellidom,telefono,email_usuario,idregion);
+end sp_insertar_proveedor;
+
+
+------ procedimiento producto----------
+
+create or replace procedure  sp_insertar_productos
+(id_producto int , nombre_pro varchar2,precio int,stock int,fecha_vencimiento date, rut_prov varchar2)
+is 
+Begin 
+INSERT INTO producto values(id_producto,nombre_pro, precio, stock,fecha_vencimiento,rut_prov);
+end sp_insertar_productos;
+
+
+
+----- procedimiento huesped----------
+
+create or replace procedure  sp_insertar_huesped 
+(ruthuesped varchar2, nombre varchar2,apellidop varchar2,apellidom varchar2,telefono int, rutempresa varchar2,idsexo int)
+is 
+Begin 
+INSERT INTO HUESPED values(ruthuesped,nombre, apellidop, apellidom,telefono,idsexo,rutempresa);
+end sp_insertar_huesped;
+
+
+----------procedimiento empleado
+
+create or replace procedure  sp_insertar_empleado
+--empleado
+(rutempleado varchar2, nombre varchar2,apellidop varchar2,apellidom varchar2,fechanacimiento date,telefono int, fechaingreso date, email_usuario varchar2, idsexo int,
+--usuario
+ idestadousuario int, idtipousuario int,contrasena varchar2)
+is 
+Begin 
+Insert into usuario values(email_usuario,contrasena,idtipousuario,idestadousuario,NULL);
+INSERT INTO empleado values(rutempleado,nombre, apellidop, apellidom,fechanacimiento,telefono,fechaingreso,idsexo,email_usuario);
+end sp_insertar_empleado;

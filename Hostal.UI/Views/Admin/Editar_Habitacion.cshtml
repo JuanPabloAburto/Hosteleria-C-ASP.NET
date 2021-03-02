@@ -1,0 +1,90 @@
+﻿@model Negocio.Admin.ListHabitacion
+
+@{
+    ViewBag.Title = "Editar_Habitacion";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal container row">
+        <div class="col-md-12">
+            <h2><strong>Editar</strong> Habitación</h2>
+
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-12">Descripción</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-12">Precio por dia Habitación</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PRECIO_HB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PRECIO_HB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+  
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-12">Estado Habitación</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ID_ESTADO, ViewBag.Estado as IEnumerable<SelectListItem>, "Selecionar Estado", new { @class = "form-control" })
+
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2 col-md-10">
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                    Guardar cambios
+                </button>
+
+                <a class="btn btn-secondary mx-2" href="/admin/Listado_Habitacion">Volver</a>
+            </div>
+        </div>
+
+
+
+        <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                     
+                     
+                            <h5 class="modal-title">¿Está seguro de Editar la Habitación ?</h5>
+                 
+
+                  
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se Editará un registro de la Habitación
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Si, Editar" class="btn btn-warning" id="BtnEnviar" />
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

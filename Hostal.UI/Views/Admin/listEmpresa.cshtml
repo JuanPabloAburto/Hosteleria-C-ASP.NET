@@ -1,0 +1,70 @@
+﻿@model List<Negocio.Admin.ListEmpresa.ListEmpresa>
+
+
+@{
+    ViewBag.Title = "listEmpresa";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h2><strong>Lista</strong> Empresa</h2>
+        </div>
+
+
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Razon social</th>
+                        <th>Telefono </th>
+                        <th>Región</th>
+                        <th>Estado</th>
+                        <th>Editar</th>
+                        <th>Detalle</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var elemento in Model)
+                    {
+                    <tr>
+                        <td>@elemento.NOMBRE_E                </td>
+                        <td>@elemento.EMAIL            </td>
+                        <td>@elemento.RAZONSOCIAL_E         </td>
+                        <td>@elemento.TELEFONO_E         </td>
+                        <td>@elemento.REGION          </td>
+                        @if (elemento.estado == "Habilitado")
+                        {
+                            <td><span class="badge badge-primary">@elemento.estado</span>          </td>
+                        }
+                        @if (elemento.estado == "Deshabilitado")
+                        {
+                            <td><span class="badge badge-danger">@elemento.estado</span>          </td>
+                        }
+                        <td>
+                            @Html.ActionLink("Editar", "Editar_Empresa", new { id = @elemento.RUT_E }, new { @class = "btn btn-warning btn-block" })
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Detalle", "Detalle_Empresa", new { id = @elemento.RUT_E }, new { @class = "btn btn-secondary btn-block" })
+                        </td>
+                    </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

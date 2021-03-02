@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Hostal Doña Clarita</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                                                                                                  data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                                                                                                  aria-label="Toggle navigation">
+            Menu<i class="fas fa-bars ml-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Servicios">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Acceder">Acceder</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Quienes">Quienes Somos</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#ubicación">ubicación</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Bienvenido</div>
+        <div class="masthead-heading text-uppercase">Hostal Doña Clarita</div>
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#Servicios">Nuestros servicios</a>
+    </div>
+</header>
+<!-- Servicios-->
+<section class="page-section" id="Servicios">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Servicios</h2>
+            <h3 class="section-subheading text-muted">
+                DOÑA CLARITA es una empresa familiar dedicada al alojamiento
+                y servicio de comedor para
+                empresas
+            </h3>
+        </div>h
+        <div class="row text-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="~/Content/Templates1/assets/img/Servicios/Habitaciones.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h1>Habitaciones </h1>
+                        <p class="card-text">Hospedate en nuestras habitaciones de primer nivel.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div  class="card">
+                    <img  src="~/Content/Templates1/assets/img/Servicios/Comida.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h1>Comedor</h1>
+                        <p class="card-text">Solicita nuestro servicio de comedor, los mejores platos a tu disposición. </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Acceder-->
+<section class="page-section bg-light" id="Acceder">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Acceder</h2>
+            <h3 class="section-subheading text-muted">Selecciona el tipo de perfil</h3>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-4 col-sm-6">
+                <div class="portfolio-item text-center">
+                    <a class="portfolio-link" href="/home/LoginEmpleador">
+                        <!-- Ruta del login -->
+                        <img class="img-fluid" src="~/Content/Templates1/assets/img/Usuarios/Empleados.jpg" alt="" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Empleado</div>
+                        <div class="portfolio-caption-subheading text-muted ">@Html.ActionLink("Acceso Empleado", "LoginEmpleador", "Home", new { Style = "color:#616161" })</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="portfolio-item text-center">
+                    <a class="portfolio-link" href="/home/LoginEmpresa">
+                        <!-- Ruta del login -->
+                        <img class="img-fluid" src="~/Content/Templates1/assets/img/Usuarios/Empresa.jpg" alt="" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Empresa</div>
+                        <div class="portfolio-caption-subheading text-muted ">@Html.ActionLink("Acceso Empresa", "LoginEmpresa", "Home", new { Style = "color:#616161" })</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 ">
+                <div class="portfolio-item text-center">
+                    <a class="portfolio-link" href="/home/LoginProveedor">
+                        <!-- Ruta del login -->
+                        <img class="img-fluid" src="~/Content/Templates1/assets/img/Usuarios/Proveedor.jpg" alt="" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Proveedor</div>
+                        <div>@Html.ActionLink("Acceso Proveedor", "LoginProveedor", "Home" ,new { Style = "color:#616161" })</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Quienes-->
+<section class="page-section" id="Quienes">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">¿Quiénes somos?</h2>
+            <h3 class="section-subheading text-muted">
+                DOÑA CLARITA es una empresa familiar dedicada al alojamiento y
+                servicio de comedor para empresas.Estamos orientados principalmente a dar un servicio de calidad y
+                seguridad a trabajadores que necesitan hospedaje por periodos de tiempo. Nuestro servicios es
+                exclusivo para empresa, no aceptamos clientes particulares, sólo se hacen convenios con empresas.
+            </h3>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+
+<!-- ubicación-->
+<section class="page-section" id="ubicación">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">ubicación Us</h2>
+            <h3 class="section-subheading text-muted">Estamos ubicados en #dirección</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="container">
+                    <img class="img-fluid" src="~/Content/Home/img/mapa.jpg" alt="">
+                </div>
+            </div>
+     
+
+        </div>
+    </div>
+</section>
+<footer class="footer py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-left">Copyright © Hostal Doña Clarita 2020</div>
+            <div class="col-lg-4 my-3 my-lg-0">
+                <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a><a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="col-lg-4 text-lg-right">
+                <a class="mr-3" href="#!">Privacy Policy</a><a href="#!">
+                    Terms of
+                    Use
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Footer-->

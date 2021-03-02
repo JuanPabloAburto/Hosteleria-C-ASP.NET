@@ -1,0 +1,75 @@
+﻿@model List<Negocio.Admin.ListProveedor>
+
+@{
+    ViewBag.Title = "listProveedores";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Admin.cshtml";
+}
+
+
+
+<div class="text-left container">
+
+</div>
+<div class="row container">
+    <div class="col-md-12">
+        <h2><strong>Lista</strong> Proveedor</h2>
+        <hr class="bg-warning" />
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="text-white bg-dark">
+                    <tr>
+                        <th>Rut Provedor</th>
+                        <th>Nombre Proveedor</th>
+                        @*<th>region</th>*@
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                         <th>Empresa de proveedor</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Estado</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var elemento in Model)
+                    {
+                    <tr>
+                        <td>@elemento.rut_prov                </td>
+                        <td>@elemento.nombre_prov             </td>
+
+                        <td>@elemento.apellidoP               </td>
+                        <td>@elemento.apellidoM               </td>
+                        <td>@elemento.empresa                 </td>
+                        <td>@elemento.telefono                </td>
+                        <td>@elemento.email                   </td>
+                        @if (elemento.estado == "Habilitado")
+                        {
+                            <td><span class="badge badge-primary">@elemento.estado</span>          </td>
+                        }
+                        @if (elemento.estado == "Deshabilitado")
+                        {
+                            <td><span class="badge badge-danger">@elemento.estado</span>          </td>
+                        }
+                        <td>
+
+                            @Html.ActionLink("Editar", "Editar_Proveedor", new { id = @elemento.rut_prov }, new { @class = "btn btn-warning" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalle", "Detalle_Proveedor", new { id = @elemento.rut_prov }, new { @class = "btn btn-secondary" })
+                        </td>
+                        @*@Html.ActionLink("Eliminar", "Delete", new { id = @elemento.rut_prov }, new { @class = "btn btn-danger" })*@
+
+
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>

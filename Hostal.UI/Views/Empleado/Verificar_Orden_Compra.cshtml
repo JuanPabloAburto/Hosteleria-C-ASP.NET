@@ -1,0 +1,157 @@
+﻿@model Negocio.Empleador.ListOC
+
+@{
+    ViewBag.Title = "Verificar_Orden_Compra";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <h2><strong>Detalle</strong> Orden de compra</h2>
+
+        <hr />
+        <div class="row container">
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        N° Orden de Compra
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.Num_OC)
+                </h6>
+            </div>
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        Rut Huesped
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.RUT_H)
+                </h6>
+            </div>
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        Nombre Huesped
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.NOMBRE_H) @Html.DisplayFor(model => model.APELLIDOPATERNO_H) @Html.DisplayFor(model => model.APELLIDOMATERNO_H)
+                </h6>
+            </div>
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Fecha Entrada
+                    </strong>
+                </h5>
+
+                <h6>
+                    @Html.DisplayFor(model => model.Fecha_Entrada)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Fecha Salida
+                    </strong>
+                </h5>
+
+                <h6>
+                    @Html.DisplayFor(model => model.Fecha_salida)
+                </h6>
+            </div>
+
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        Telefono
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.TELEFONO_H)
+                </h6>
+            </div>
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        Rut Empresa
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.RUT_E) @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+                </h6>
+            </div>
+
+            <div class=" col-md-6">
+                <h5>
+                    <strong>
+                        Nombre Empresa
+                    </strong>
+                </h5>
+                <h6>
+                    @Html.DisplayFor(model => model.NOMBRE_EMPRESA)
+                </h6>
+            </div>
+
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Habitación
+                    </strong>
+                </h5>
+
+                <h6>
+                    @Html.DisplayFor(model => model.Num_Hab)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Valor de la Habitación por Dias
+                    </strong>
+                </h5>
+
+                <h6>
+                    @Html.DisplayFor(model => model.total_habitacion)
+                </h6>
+            </div>
+
+            <div class="col-md-6">
+                <h5>
+                    <strong>
+                        Estado
+                    </strong>
+                </h5>
+
+                <h6>
+                  
+                </h6>
+            </div>
+        </div>
+
+
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="/Empleado/Listar_Orden_Compra" class="btn btn-warning mx-2">
+                    Volver
+                </a>
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
+            </div>
+        </div>
+    </div>
+}
+
+

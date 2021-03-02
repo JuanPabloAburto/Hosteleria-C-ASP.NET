@@ -1,0 +1,158 @@
+﻿@model Negocio.Empleador.ListPedido
+
+@{
+    ViewBag.Title = "Crear_Pedido";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal row container">
+        <div class="col-sm-12">
+            <div class="text-danger">
+                <p class="text-center">
+                    @ViewBag.Error
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+            <h2><strong>Crear</strong> Orden de pedido</h2>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.FECHA_ORDEN, "Fecha Orden Pedido", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FECHA_ORDEN, new { htmlAttributes = new { @class = "form-control", @Type = "date", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.FECHA_ORDEN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.RUT_PROV, "Rut proveedor", htmlAttributes: new { @class = "control-label col-md-12" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RUT_PROV, new { htmlAttributes = new { @class = "form-control ", @Type = "text", @disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.RUT_PROV, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <div class="col-md-offset-2 col-md-10">
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ConfirmacionEmp">
+                    Crear Pedido
+                </button>
+
+                <a class="btn btn-secondary mx-2" href="/admin/Listar_Orden_Pedido">Volver</a>
+            </div>
+        </div>
+
+
+
+        <div class="modal" id="ConfirmacionEmp" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">¿Esta segura de crear este Orden?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se creará una orden de compra
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Si, Crear" class="btn btn-warning" id="BtnEnviar" />
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div>
+</div>
+@*-------------------------------------------------------------------------*@
+
+
+
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <h2><strong>Lista</strong> Ordenes de Pedidos</h2>
+        </div>
+
+
+        <div class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th> N° Orden Pedido</th>
+                        <th>Fecha Orden </th>
+                        <th> Rut proveedor</th>
+                        <th>Nombre proveedor</th>
+                        <th> Empresa proveedor</th>
+                        <th>Estado Orden</th>
+                        <th> Productos Solicitados
+                        <th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var item in (List<Negocio.Empleador.ListPedido>)ViewBag.listordenproc)
+                    {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.ID_ORDENPEDIDO) </td>
+                        <td> @Html.DisplayFor(modelItem => item.FECHA_ORDEN)</td>
+                        <td> @Html.DisplayFor(modelItem => item.RUT_PROV) </td>
+                        <td> @Html.DisplayFor(modelItem => item.NOMBRE_PROV) @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_PROV) </td>
+                        <td> @Html.DisplayFor(modelItem => item.EMPRESA)</td>
+
+                        @if (item.DESCRIPCION_ESTADO == "en proceso")
+                        {
+                            <td><span class="badge badge-secondary">@item.DESCRIPCION_ESTADO</span>          </td>
+                        }
+                        @if (item.DESCRIPCION_ESTADO == "rechazada")
+                        {
+                            <td><span class="badge badge-danger">@item.DESCRIPCION_ESTADO</span>          </td>
+                        }
+                        @if (item.DESCRIPCION_ESTADO == "despachada")
+                        {
+                            <td><span class="badge badge-primary">@item.DESCRIPCION_ESTADO</span>          </td>
+                        }
+
+                        @if (item.DESCRIPCION_ESTADO == "aceptada")
+                        {
+                            <td><span class="badge badge-success">@item.DESCRIPCION_ESTADO</span>          </td>
+                        }
+
+
+                        <td>   @Html.ActionLink("Ver pedido", "Lista_Productospedidosenproceso", new { id_ped = item.ID_ORDENPEDIDO }, new { @class = "btn btn-secondary " })</td>
+                    </tr>
+
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

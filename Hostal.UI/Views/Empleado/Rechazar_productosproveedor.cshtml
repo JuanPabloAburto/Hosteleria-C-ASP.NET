@@ -1,0 +1,73 @@
+﻿@model Negocio.Proveedor.ListOrdenpedidoprov
+@{
+    ViewBag.Title = "Rechazar_productosproveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+
+<div class="container mt-5">
+    <h2>Rechazar productos solicitados</h2>
+    <hr class="bg-warning" />
+    <div class="row">
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Id Orden pedido
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.ID_ORDENPEDIDO)
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Rut  proveedor
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.RUT_PROV)
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Nombre proveedor
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.NOMBRE_PROV) @Html.DisplayFor(model => model.apellidopaterno_prov)
+
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Fecha Orden de pedido
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.FECHA_ORDEN)
+
+            </h6>
+        </div>
+
+
+    </div>
+    <form method="post">
+
+        <div class="form-group col-md-12">
+            <label class="control-label col-md-12">
+                Motivo de rechazo
+            </label>
+
+            @Html.EditorFor(model => model.motivo, new { htmlAttributes = new { @class = "form-control", @id = "textNombre", @Type = "text", @required = "required" } })
+            @Html.ValidationMessageFor(model => model.motivo, "", new { @class = "text-danger" })
+
+        </div>
+
+
+        <div class="col-md-4 ">
+            <input type="submit" value="Si, Enviar" class="btn btn-warning" id="BtnEnviar" />
+        </div>
+
+    </form>
+
+</div>

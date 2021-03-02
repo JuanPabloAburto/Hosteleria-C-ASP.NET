@@ -1,0 +1,61 @@
+﻿@model List<Negocio.Empleador.ListOC>
+@{
+    ViewBag.Title = "Listado Huespedes";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+<div class="row container">
+
+    <div class="col-md-12">
+        <h2><strong>Servicios</strong> a Huesped</h2>
+
+
+        <div id="" class="table-responsive">
+            <table id="Tabla" class="table table-striped table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Rut               </th>
+                        <th>Nombre            </th>
+
+                        <th>Apellido P         </th>
+                        <th>Nombre Empresa          </th>
+
+                        <th>Total Comedor              </th>
+                        <th>
+                            Pedir
+                        </th>
+                        <th>
+                            Ver
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.RUT_H)              </td>
+                <td> @Html.DisplayFor(modelItem => item.NOMBRE_H)            </td>
+                <td> @Html.DisplayFor(modelItem => item.APELLIDOPATERNO_H)        </td>
+                <td> @Html.DisplayFor(modelItem => item.NOMBRE_EMPRESA)          </td>
+                <td> @Html.DisplayFor(modelItem => item.total_comedor)         </td>
+
+
+
+
+                <td>
+                    @Html.ActionLink("Comedor", "ReservarComedor", new { id = item.Num_OC }, new { @class = "btn btn-warning btn-block " })
+                </td>
+
+                <td>
+                    @Html.ActionLink("Servicios solicitados", "ReservarComedor", new { id = @item.Num_OC }, new { @class = "btn btn-dark btn-block " })
+                </td>
+
+            </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

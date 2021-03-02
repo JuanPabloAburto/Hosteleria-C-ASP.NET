@@ -1,0 +1,47 @@
+﻿@model List<Negocio.Empleador.ListHabitaciones>
+
+@{
+    ViewBag.Title = "listHabitaciones";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+
+
+<div class="row container">
+
+        <div class="col-md-12">
+            <h2><strong>Estado de habitaciones</strong></h2>
+        </div>
+
+        @foreach (var elemento in Model)
+        {
+            <div class="col-sm-12 col-md-4">
+                <div class="card mt-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>Habitación @elemento.NUMERO_HB</strong></h5>
+                        <p class="card-text text-center">@elemento.DESCRIPCION</p>
+                        @if (elemento.ESTADO_HABITACION == "Disponible")
+                        {
+                            <button class="btn btn-warning btn-block">@elemento.ESTADO_HABITACION</button>
+                        }
+                        @if (elemento.ESTADO_HABITACION == "No Disponible")
+                        {
+                            <button class="btn btn-danger btn-block">@elemento.ESTADO_HABITACION</button>
+
+
+                        }
+                        @if (elemento.ESTADO_HABITACION == "Mantenimiento")
+                        {
+                            <button class="btn btn-danger btn-block">@elemento.ESTADO_HABITACION</button>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+ 
+</div>
+

@@ -1,0 +1,102 @@
+﻿@model Negocio.Proveedor.ListOrdenpedidoprov
+@{
+    ViewBag.Title = "Recibir_productosproveedor";
+    Layout = "~/Views/Shared/Layout_Usuarios/_Layout_Home_Empleado.cshtml";
+}
+  
+<div class="container mt-5">
+    <h2>Enviar productos al hostal</h2>
+    <hr class="bg-warning" />
+    <div class="row">
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Id Orden pedido
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.ID_ORDENPEDIDO)
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Rut  proveedor
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.RUT_PROV) 
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Nombre proveedor
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.NOMBRE_PROV) @Html.DisplayFor(model => model.apellidopaterno_prov)
+
+            </h6>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h5>
+                Fecha Orden de pedido
+            </h5>
+            <h6>
+                @Html.DisplayFor(model => model.FECHA_ORDEN)
+
+            </h6>
+        </div>
+
+
+        @*----------------------Listado cantidad productos a enviar------------------------------------------------------------*@
+
+        <div class="row container">
+
+            <div class="col-md-12">
+                <div class="col-md-12">
+                </div>
+
+                <div class="table-responsive">
+                    <table id="TablaAgregar" class="table table-striped table-hover table-sm">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Nombre producto     </th>
+                                <th>Cantidad recibida </th>
+                                <th>Precio Producto     </th>
+                                <th>Precio total productos</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var elemento in (List<Negocio.Empleador.ListadoProductos>)ViewBag.listrecibir)
+                            {
+                                <tr>
+                                    <td>@elemento.nombre_producto             </td>
+                                    <td>@elemento.cantidad_recibida         </td>
+                                    <td>@elemento.precio_producto        </td>
+                                    <td>@elemento.total_productos       </td>
+
+                                </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        @*----------------------------------------------------------------------------------*@
+
+
+        <form method="post">
+            <div class="modal-footer">
+                <input type="submit" value="Si, Enviar" class="btn btn-warning" id="BtnEnviar" />
+            </div>
+
+        </form>
+    </div>
+
+</div>

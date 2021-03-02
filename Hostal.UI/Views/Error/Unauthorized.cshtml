@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Unauthorized";
+    Layout = "~/Views/Shared/Error.cshtml";
+}
+
+<br>
+<br>
+<div class="container mt-5">
+    <div class="text-center">
+        <hr class="bg-warning" />
+        <h1 class="text-warning mt-5 display-3"><strong>Permiso denegado</strong></h1>
+        <hr class="bg-warning mt-5">
+        <br>
+        <h3 class="text-white">No tienes los permisos necesario para acceder a esta sección</h3>
+
+      
+
+        <form class="p-5">
+            <input class="btn btn-outline-warning btn-lg" type="button" value="¡Regresar!" onclick="history.back ()">
+        </form>
+
+    </div>
+</div>

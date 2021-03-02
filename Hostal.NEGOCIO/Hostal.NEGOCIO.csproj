@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29AFF90A-FF67-49CB-A80A-B3DBC37E9660}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Negocio</RootNamespace>
+    <AssemblyName>Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.7.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.7.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factory\Creacion.cs" />
+    <Compile Include="Factory\IngresoUsuarios.cs" />
+    <Compile Include="Factory\UserAdmin.cs" />
+    <Compile Include="Factory\UserEmpleado.cs" />
+    <Compile Include="Factory\UserEmpresa.cs" />
+    <Compile Include="Factory\UserProv.cs" />
+    <Compile Include="Negocio\Admin\Administrador.cs" />
+    <Compile Include="Negocio\Admin\ListEmpleado.cs" />
+    <Compile Include="Negocio\Admin\ListEmpresa.cs" />
+    <Compile Include="Negocio\Admin\ListHabitacion.cs" />
+    <Compile Include="Negocio\Admin\ListProveedor.cs" />
+    <Compile Include="Negocio\Conexion\Conexion.cs" />
+    <Compile Include="Negocio\DatosUsuarios\DatosUsuario.cs" />
+    <Compile Include="Negocio\Empleador\Empleador.cs" />
+    <Compile Include="Negocio\Empleador\ListadoProductos.cs" />
+    <Compile Include="Negocio\Empleador\ListaMenu.cs" />
+    <Compile Include="Negocio\Empleador\Listcomboproductos.cs" />
+    <Compile Include="Negocio\Empleador\ListHabitaciones.cs" />
+    <Compile Include="Negocio\Empleador\ListOC.cs" />
+    <Compile Include="Negocio\Empleador\ListPedido.cs" />
+    <Compile Include="Negocio\Empleador\ListRecepcion.cs" />
+    <Compile Include="Negocio\Empleador\ProductoProveedor.cs" />
+    <Compile Include="Negocio\Empresa\aggregatesBill.cs" />
+    <Compile Include="Negocio\Empresa\BodyBill.cs" />
+    <Compile Include="Negocio\Empresa\DetailBill.cs" />
+    <Compile Include="Negocio\Empresa\HeadBill.cs" />
+    <Compile Include="Negocio\Empresa\ListFactura.cs" />
+    <Compile Include="Negocio\Empresa\ListHuesped.cs" />
+    <Compile Include="Negocio\Empresa\Empresa.cs" />
+    <Compile Include="Negocio\Graficos\CantidadPlatos.cs" />
+    <Compile Include="Negocio\Graficos\CantidadPLatosClass.cs" />
+    <Compile Include="Negocio\Graficos\OrdenCompra.cs" />
+    <Compile Include="Negocio\Graficos\OrdenCompraClass.cs" />
+    <Compile Include="Negocio\HASH\Encriptacion.cs" />
+    <Compile Include="Negocio\Proveedor\ListOrdenpedidoprov.cs" />
+    <Compile Include="Negocio\Proveedor\Proveedor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hostal.DATOS\Hostal.DATOS.csproj">
+      <Project>{9eaad8c8-6e0e-4a1e-b52a-5ba386f53233}</Project>
+      <Name>Hostal.DATOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HOSTAL.ENTIDADES\Hostal.ENTIDADES.csproj">
+      <Project>{d5f54041-42e4-41cc-a445-9da4d4a4d066}</Project>
+      <Name>Hostal.ENTIDADES</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
